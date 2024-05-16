@@ -1,4 +1,5 @@
-variable "instance_name" {
+# ec2 variables
+variable "instance_names" {
     type = list
     default = ["db","backend","frontend"]
 }
@@ -17,16 +18,17 @@ variable "common_tags" {
     default = {
         Project = "Expense"
         Environment = "Dev"
-        Terraform = "true"    
-    } 
+        Terraform = "true"
+    }
 }
 
+#sg variables
 variable "sg_name" {
     default = "allow_ssh"
 }
 
 variable "sg_description" {
-    default = "allowing port 22"  
+    default = "allowing port 22"
 }
 
 variable "ssh_port" {
@@ -34,10 +36,20 @@ variable "ssh_port" {
 }
 
 variable "protocol" {
-    default = "tcp" 
+    default = "tcp"
 }
 
-variable "alloed_cidr" {
+variable "allowed_cidr" {
     type = list(string)
-    default = ["0.0.0.0/0"]  
+    default = ["0.0.0.0/0"]
+}
+
+
+#r53 variables
+variable "zone_id" {
+    default = "Z01189463LQ00IWVUX9MQ"
+}
+
+variable "domain_name" {
+    default = "daws78sy.online"
 }
